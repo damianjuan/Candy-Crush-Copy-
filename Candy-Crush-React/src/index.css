@@ -1,10 +1,10 @@
-.app{
+.app {
   display: flex;
   padding: 30px;
 }
 
 .game {
-  width: 540px;
+  width: 560px;
   height: 560px;
   display: flex;
   flex-wrap: wrap;
