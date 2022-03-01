@@ -1,11 +1,13 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const width = 8;
 const candyColors = ['blue', 'green', 'orange', 'purple', 'red', 'yellow'];
 
 const App = () => {
-const [currentColorArrangement, setCurrentColorArrangement] = useState([])
-  //board will be 8x8
+
+  const [currentColorArrangement, setCurrentColorArrangement] = useState([])
+ 
+  //board will be 8x8 create random colors to fill board
   const createBoard = () => {
     const randomColorArrangement = [];
     for(let i = 0; i < width*width; i++){
@@ -16,13 +18,19 @@ const [currentColorArrangement, setCurrentColorArrangement] = useState([])
 setCurrentColorArrangement(randomColorArrangement)
   };
 
+// function only gets called once
+useEffect(() => {
+  createBoard();
+}, []);
 
-
-createBoard();
 console.log(currentColorArrangement);
 
   return (
-<div></div>
+<div className='app'>
+<div className='game'>
+
+</div>
+</div>
   );
 };
 
