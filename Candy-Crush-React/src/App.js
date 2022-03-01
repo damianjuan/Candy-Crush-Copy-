@@ -39,9 +39,11 @@ const App = () => {
     createBoard();
   }, []);
 
+  //check every 100ms for matching column of three
   useEffect(() => {
     const timer = setInterval(() => {
       checkForColumnOfThree();
+      setCurrentColorArrangement([...currentColorArrangement]);
     }, 100);
     return () => clearInterval(timer);
   }, [checkForColumnOfThree]);
