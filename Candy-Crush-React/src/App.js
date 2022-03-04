@@ -3,9 +3,9 @@ import leo from './images/leo.png';
 import mike from './images/mike.png';
 import shredder from './images/shredder.png';
 import raph from './images/raph.png';
-import donnie from 'Candy-Crush-React\src\images\donnie.png';
+import donnie from './images/donnie.png';
 import splinter from './images/splinter.png';
-import blank from 'Candy-Crush-React\src\images\blank.png';
+import blank from './images/blank.png';
 
 const width = 8;
 const candyColors = [leo, splinter, mike, donnie, raph, shredder];
