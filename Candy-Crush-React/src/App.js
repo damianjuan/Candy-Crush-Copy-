@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ScoreBoard from './components/ScoreBoard';
 import leo from './images/leo.png';
 import mike from './images/mike.png';
 import shredder from './images/shredder.png';
@@ -14,6 +15,7 @@ const App = () => {
   const [currentColorArrangement, setCurrentColorArrangement] = useState([]);
   const [squareBeingDragged, setSquareBeingDragged] = useState(null);
   const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
+  const [scoreDisplay, setScoreDisplay] = useState(0);
 
   const checkForRowOfFour = () => {
     for (let i = 0; i < 64; i++) {
@@ -44,14 +46,9 @@ const App = () => {
       const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
       const decidedColor = currentColorArrangement[i];
 
-      if (
-        columnOfFour.every(
-          (square) => currentColorArrangement[square] === decidedColor
-        )
-      ) {
-        columnOfFour.forEach(
-          (square) => (currentColorArrangement[square] = blank)
-        );
+      if (columnOfFour.every((square) => currentColorArrangement[square] === decidedColor)) {
+        setScoreDisplay((score) => score + 4);
+        columnOfFour.forEach((square) => (currentColorArrangement[square] = blank));
         return true;
       }
     }
@@ -115,18 +112,15 @@ const App = () => {
     }
   };
 
+  console.log(scoreDisplay);
+
   const dragStart = (e) => {
-    console.log(e.target);
-    console.log('dragstart');
     setSquareBeingDragged(e.target);
   };
   const dragDrop = (e) => {
-    console.log(e.target);
-    console.log('drag  drop');
     setSquareBeingReplaced(e.target);
   };
   const dragEnd = (e) => {
-    console.log('drag end');
     const squareBeingDraggedId = parseInt(
       squareBeingDragged.getAttribute('data-id')
     );
@@ -138,9 +132,6 @@ const App = () => {
       squareBeingDragged.getAttribute('src');
     currentColorArrangement[squareBeingDraggedId] =
       squareBeingReplaced.getAttribute('src');
-
-    console.log(squareBeingDraggedId, 'dragged id');
-    console.log(squareBeingReplacedId, 'replaced id');
 
     const validMoves = [
       squareBeingDraggedId - 1,
@@ -230,6 +221,7 @@ const App = () => {
           />
         ))}
       </div>
+      <ScoreBoard score={scoreDisplay} />
     </div>
   );
 };
