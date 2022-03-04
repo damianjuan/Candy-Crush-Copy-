@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import leo from './images/leo.png';
-//import leo from '.\src\images\leo.jpg';
-// import {mike} from './images/mike.jpeg';
-// import {shredder} from './images/shredder.jpeg';
-// import {raph} from './images/raph.jpeg';
-// import {donnie} from 'Candy-Crush-React\src\images\donnie.jpg';
-// import {splinter} from './images/splinter.jpeg';
-// import {blank} from 'Candy-Crush-React\src\images\blank.jpg';
+import mike from './images/mike.png';
+import shredder from './images/shredder.png';
+import raph from './images/raph.png';
+import donnie from 'Candy-Crush-React\src\images\donnie.png';
+import splinter from './images/splinter.png';
+import blank from 'Candy-Crush-React\src\images\blank.png';
 
 const width = 8;
 const candyColors = [leo, splinter, mike, donnie, raph, shredder];
