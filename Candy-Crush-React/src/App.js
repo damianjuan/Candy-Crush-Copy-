@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-// import {leo} from '.images/leo.jpeg';
+import leo from './images/leo.png';
+//import leo from '.\src\images\leo.jpg';
 // import {mike} from './images/mike.jpeg';
 // import {shredder} from './images/shredder.jpeg';
 // import {raph} from './images/raph.jpeg';
