@@ -95,8 +95,6 @@ const App = () => {
     }
   };
 
-  console.log(scoreDisplay);
-
   const dragStart = (e) => {
     setSquareBeingDragged(e.target);
   };
@@ -182,8 +180,6 @@ const App = () => {
     moveIntoSquareBelow,
     currentColorArrangement,
   ]);
-
-  //console.log(currentColorArrangement);
 
   return (
     <div className="app">
