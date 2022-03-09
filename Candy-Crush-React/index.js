@@ -4,15 +4,16 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors());
-
 require('dotenv').config();
-app.use(express.json);
+//app.use(express.json);
+
+
 
 app.get('/', (req, res) => {
     res.json('this works');
 })
 
-//get all the scores
+// //get all the scores
 app.get('/scores', (req, res) => {
     const options = {
         method: 'GET',
@@ -26,7 +27,7 @@ app.get('/scores', (req, res) => {
         .catch(err => res.status(500).json({ message: err }))
 });
 
-//post scores to database
+// //post scores to database
 app.post('/addscore', (req, res) => {
     const testData = {
         username: 'Samantha',
