@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const randomUserNames = ['Beau', 'Nestle', 'Dot', 'Onyx', 'Lei', 'Pepper', 'Mozzorella', 'Parm'];
+
 const ScoreBoard = ({ score }) => {
     const [data, setData] = useState(null);
-
+    const [userName, setUserName] = useState(null);
 
     const fetchData = async () => {
         const response = await axios.get('http://localhost:8000/scores')
@@ -21,11 +23,14 @@ const ScoreBoard = ({ score }) => {
 
     useEffect(() => {
         fetchData()
+        setUserName(randomUserNames[Math.floor(Math.random() * randomUserNames.length)]);
     }, []);
+
+    console.log(userName);
 
     return (
         <div className="score-board">
-            <h2>{score}</h2>
+            <h2>{userName} score: {score}</h2>
             <button onClick={saveData}>Save Score</button>
         </div>
     )
