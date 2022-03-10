@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 const randomUserNames = ['Beau', 'Nestle', 'Dot', 'Onyx', 'Lei', 'Pepper', 'Mozzorella', 'Parm'];
 
 const ScoreBoard = ({ score }) => {
-    const [data, setData] = useState(null);
+    const [gameStates, setGameStates] = useState(null);
     const [userName, setUserName] = useState(null);
+
 
     const fetchData = async () => {
         const response = await axios.get('http://localhost:8000/scores')
-        console.log(response.data.data);
-        setData(response.data.data);
+        const data = Object.keys(response.data.data).map(item => response.data.data[item]);
+        setGameStates(data);
     }
 
-    //console.log(data);
+    console.log(gameStates);
 
     const saveData = async () => {
         axios.post('http://localhost:8000/addscore')
@@ -31,6 +32,8 @@ const ScoreBoard = ({ score }) => {
     return (
         <div className="score-board">
             <h2>{userName} score: {score}</h2>
+            <h2>High Scores</h2>
+            {/* {gameStates ? .map(gameState)} */}
             <button onClick={saveData}>Save Score</button>
         </div>
     )
