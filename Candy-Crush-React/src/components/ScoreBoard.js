@@ -27,13 +27,17 @@ const ScoreBoard = ({ score }) => {
         setUserName(randomUserNames[Math.floor(Math.random() * randomUserNames.length)]);
     }, []);
 
-    console.log(userName);
+    //console.log(userName);
 
     return (
         <div className="score-board">
             <h2>{userName} score: {score}</h2>
             <h2>High Scores</h2>
-            {/* {gameStates ? .map(gameState)} */}
+            {gameStates?.map((gameState, index) => (
+                <div key={{ index }}>
+                    <h3>{gameState.username} : {gameState.score}</h3>
+                </div>
+            ))}
             <button onClick={saveData}>Save Score</button>
         </div>
     )
