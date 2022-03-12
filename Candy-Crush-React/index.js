@@ -29,9 +29,10 @@ app.get('/scores', (req, res) => {
 
 // //post scores to database
 app.post('/addscore', (req, res) => {
+    console.log(req);
     const testData = {
-        username: 'Samantha',
-        score: 1
+        username: 'Spencer',
+        score: 15
     }
     const options = {
         method: 'POST',

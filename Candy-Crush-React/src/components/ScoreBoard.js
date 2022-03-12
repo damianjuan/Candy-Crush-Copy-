@@ -14,10 +14,14 @@ const ScoreBoard = ({ score }) => {
         setGameStates(data);
     }
 
-    console.log(gameStates);
+    // console.log(gameStates);
 
     const saveData = async () => {
-        axios.post('http://localhost:8000/addscore')
+        const data = {
+            username: userName,
+            score: score
+        }
+        axios.post('http://localhost:8000/addscore', data)
             .then((response) => { console.log(response) })
             .catch((error) => { console.log(error) })
     };
@@ -29,11 +33,13 @@ const ScoreBoard = ({ score }) => {
 
     //console.log(userName);
 
+    const descendingGameStates = gameStates?.sort((a, b) => b.score - a.score);
+
     return (
         <div className="score-board">
             <h2>{userName} score: {score}</h2>
             <h2>High Scores</h2>
-            {gameStates?.map((gameState, index) => (
+            {descendingGameStates?.map((gameState, index) => (
                 <div key={{ index }}>
                     <h3>{gameState.username} : {gameState.score}</h3>
                 </div>
