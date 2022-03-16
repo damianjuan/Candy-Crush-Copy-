@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.json('this works');
 })
 
-// //get all the scores
+// //get all the scores if database not used for more than 24 hours have to make request and wait 5 mins for database to become active again
 app.get('/scores', (req, res) => {
     const options = {
         method: 'GET',
